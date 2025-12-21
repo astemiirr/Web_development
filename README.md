@@ -1,1 +1,2 @@
-Repository for the course -Basics of Web Development in PHP-
+## Репозиторий для курса "Основы веб-разработки на PHP"
+## Автор: Хашпаков Астемир
