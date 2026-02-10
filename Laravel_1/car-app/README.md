@@ -1,59 +1,69 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Система учета автомобилей на Laravel
+### Автор: Хашпаков Астемир
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Веб-приложение для учета автомобилей, разработанное на Laravel.
 
-## About Laravel
+## Требования
+- PHP ≥ 8.1
+- Composer
+- Laravel 10
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Установка и запуск
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1. Клонировать репозиторий
+2. Установить зависимости: `composer install`
+3. Запустить сервер: `php artisan serve`
+4. Открыть: `http://localhost:8000`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Функциональность
 
-## Learning Laravel
+### 1. Добавление автомобиля
+- Форма с 10 полями (марка, модель, год, цена, цвет, объем двигателя, КПП, тип топлива, пробег, VIN)
+- Валидация всех полей
+- Автоматическая генерация ID и даты
+- Сохранение в JSON файл
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 2. Поиск автомобилей
+- Гибкий поиск по любым заполненным полям
+- Частичное совпадение для текстовых полей
+- Точное совпадение для числовых
+- Просмотр всех автомобилей
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 3. Хранение данных
+- **Формат:** JSON
+- **Расположение:** `storage/app/private/cars.json`
+- **Причина:** Laravel сохраняет приватные файлы в `private/` для безопасности
+- **Доступ:** Только через контроллер
 
-## Laravel Sponsors
+## Структура проекта
+```
+car-app/
+├── app/Http/Controllers/CarController.php
+├── resources/views/cars/
+│   ├── form.blade.php
+│   └── list.blade.php
+├── routes/web.php
+├── storage/app/private/cars.json
+└── README.md
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Особенности
+1. **Без БД** - только JSON файл
+2. **Валидация на сервере**
+3. **Гибкий поиск** - по любым комбинациям полей
+4. **Bootstrap 5** - адаптивный интерфейс
+5. **Обработка ошибок** - сообщения об успехе/ошибке
 
-### Premium Partners
+## Маршруты
+- `GET /` - главная с формой
+- `POST /cars/store` - сохранение
+- `POST /cars/search` - поиск
+- `GET /cars/search` - все автомобили
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Для задания выполнено
+✅ Форма с 10+ полями
+✅ Сохранение в JSON файл (без БД)
+✅ Поиск по заполненным полям
+✅ Blade шаблоны
+✅ Контроллер CarController
+✅ Маршруты в web.php
