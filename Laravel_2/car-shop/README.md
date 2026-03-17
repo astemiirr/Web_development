@@ -30,13 +30,13 @@
 ## 📸 Скриншоты
 
 ### Главная страница каталога
-![Главная](screenshots/photo1.png)
+![Главная](public/screenshots/photo1.png)
 
 ### Страница товара с оценкой
-![Товар](screenshots/photo2.png)
+![Товар](public/screenshots/photo2.png)
 
 ### Административная панель
-![Админка](screenshots/photo3.png)
+![Админка](public/screenshots/photo3.png)
 
 ## 🚀 Установка и запуск
 
